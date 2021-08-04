@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: wso2is-mysql-db-service
+  labels:
+    purpose: integrator-shared-deployment
+spec:
+  capacity:
+    storage: 8Gi
+  volumeMode: Filesystem  
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
