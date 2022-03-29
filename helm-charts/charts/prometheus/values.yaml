@@ -845,6 +845,15 @@ server:
   ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
   ##
   # schedulerName:
+  
+  StorageClass:
+    metadata:
+      name: standard-gcp
+    provisioner: kubernetes.io/gce-pd
+    parameters:
+      type: pd-standard
+      fstype: ext4
+      replication-type: none
 
   persistentVolume:
     ## If true, Prometheus server will create/use a Persistent Volume Claim
@@ -883,7 +892,7 @@ server:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    # storageClass: "-"
+    storageClassName: standard-gcp
 
     ## Prometheus server data Persistent Volume Binding Mode
     ## If defined, volumeBindingMode: <volumeBindingMode>
